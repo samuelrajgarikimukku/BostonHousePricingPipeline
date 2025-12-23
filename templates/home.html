@@ -1,3 +1,89 @@
-<h1>
-    Hello   World
-</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Boston House Price Prediction</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+        }
+
+        .login {
+            width: 420px;
+            margin: 80px auto;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 12px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .result-box {
+            margin-top: 25px;
+            padding: 15px;
+            background-color: #e9f2ff;
+            border-left: 5px solid #007bff;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login">
+        <h1>Boston House Price Prediction</h1>
+
+        <form action="{{ url_for('predict') }}" method="post">
+            <input type="text" name="CRIM" placeholder="CRIM" required>
+            <input type="text" name="ZN" placeholder="ZN" required>
+            <input type="text" name="INDUS" placeholder="INDUS" required>
+            <input type="text" name="CHAS" placeholder="CHAS" required>
+            <input type="text" name="NOX" placeholder="NOX" required>
+            <input type="text" name="RM" placeholder="RM" required>
+            <input type="text" name="AGE" placeholder="AGE" required>
+            <input type="text" name="DIS" placeholder="DIS" required>
+            <input type="text" name="RAD" placeholder="RAD" required>
+            <input type="text" name="TAX" placeholder="TAX" required>
+            <input type="text" name="PTRATIO" placeholder="PTRATIO" required>
+            <input type="text" name="B" placeholder="B" required>
+            <input type="text" name="LSTAT" placeholder="LSTAT" required>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction_text %}
+        <div class="result-box">
+            {{ prediction_text }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
