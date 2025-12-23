@@ -1,5 +1,5 @@
 import pickle
-from flask import Flask, request,app, jsonify,url_for,render_template,redirect,flash,session,escape
+from flask import Flask, request,app, jsonify,url_for,render_template,redirect,flash,session
 import numpy as np 
 import pandas as pd
 
@@ -20,7 +20,7 @@ def predict_api():
     print(np.array(list(data.values())).reshape(1,-1))
 
     #Transforming new data
-    new_data =scalar.tranform(np.array(list(data.values())).reshape(1,-1))
+    new_data =scalar.transform(np.array(list(data.values())).reshape(1,-1))
     output=regmodel.predict(new_data)
     print(output[0])
     return jsonify(output[0])
